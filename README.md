@@ -1,5 +1,5 @@
 # optiblank  :rocket:
-
+document.cookie="opticookieQA=ktest; path=/;"
 
 
 ### background  :bell:
