@@ -47,12 +47,12 @@
 
 <kbd>city-course-page</kbd>  :rocket:     
 
-![](/images/optiblank-kaplan-city.png) 
+![](/src/images/optiblank-kaplan-city.png) 
 
 
 <kbd>country-page</kbd>  :rocket:     
 
-![](/images/optiblank-kaplan-country.png) 
+![](/src/images/optiblank-kaplan-country.png) 
 
 
 
