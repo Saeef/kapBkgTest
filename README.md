@@ -36,6 +36,18 @@ RU		=>	Segment for visitors on /ru . :pill:
 ### notes
 
 
+<br/>
+
+<kbd>city-course-page</kbd>  :rocket:     
+
+![](/src/images/optiblank-kaplan-city.png) 
+
+
+<kbd>country-page</kbd>  :rocket:     
+
+![](/src/images/optiblank-kaplan-country.png) 
+
+
 
 ### directory structure :tree:
 
@@ -59,21 +71,3 @@ RU		=>	Segment for visitors on /ru . :pill:
 			└── README
 
 ```
-
-
-<br/>
-
-
-
-
-<kbd>city-course-page</kbd>  :rocket:     
-
-![](/src/images/optiblank-kaplan-city.png) 
-
-
-<kbd>country-page</kbd>  :rocket:     
-
-![](/src/images/optiblank-kaplan-country.png) 
-
-
-
