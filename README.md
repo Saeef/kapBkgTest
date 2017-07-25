@@ -45,13 +45,14 @@
 
 
 
-<kbd>desktop</kbd>  :rocket:     
+<kbd>city-course-page</kbd>  :rocket:     
 
-![](/images/) 
+![](/images/optiblank-kaplan-city.png) 
 
-<kbd>desktop</kbd>  :rocket:     
 
-![](/images/) 
+<kbd>country-page</kbd>  :rocket:     
+
+![](/images/optiblank-kaplan-country.png) 
 
 
 
