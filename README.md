@@ -16,13 +16,13 @@ https://www.kaplaninternational.com/mx .   :coffee:
 https://www.kaplaninternational.com/ru .   :coffee:            
 
 #### devices
-- desktop
-- mobile
+- desktop .  :computer:
+- mobile .   :computer:
 
 #### browsers
-- chrome 45+
-- firefox 45+
-- ie9+
+- chrome 45+ .   :scroll:
+- firefox 45+ .  :scroll: 
+- ie9+            :scroll:
 
 ### attributes
 Brazil		=>	Visitor numbers for users on brazil domain . :pill:        
