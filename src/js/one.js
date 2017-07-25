@@ -1,5 +1,6 @@
 (function(andRedEyelikeOptiblank, undefined) {
    var $ = window.jQuery;
+   window.optimizely = window.optimizely || [];
    var SL = {};
    var Landing = function(hostname,pathname,city,lostor,lastURL,newURL) {
       console.info('%c Landing \u221a', 'background:blue;color:white;');
@@ -15,9 +16,9 @@
    SL.andRedEyelikeOptiblank = {
       init: function() { 
          console.info('%c init \u221a', 'background:blue;color:white;');
-         this.pgCssDesktop();
-         this.proto();
-                     
+            this.pgCssDesktop();
+            this.proto();   
+
       },//init
 
       pgCssDesktop: function() {
@@ -34,82 +35,258 @@
       },//pgCssDesktop
 
       proto: function() {
-         debugger;
-         var whatLoaded = Landing.prototype.whatLoaded = function(hostname,pathname,lastURL) {
+         setInterval(function(){
+               var whatLoaded = Landing.prototype.whatLoaded = function(hostname,pathname,lastURL,city) {
             //Landing
+            var subpath;
             this.lastURL = lastURL;
             this.hostname = hostname;
             this.pathname = pathname;
+            this.city = city;
+            //remove previous experiment if it exists
+
+            if(document.getElementById('newPremenu')) {
+                  var prem = document.getElementById('newPremenu');
+                  prem.parentElement.removeChild(prem);
+            }     
+
             if(this.hostname == 'www.kaplaninternational.com') {
 
                switch(this.pathname) {
                   case '/united-states':
                      this.lostor = this.pathname.slice(1,this.pathname.length);
                      this.lostor = localStorage.setItem('country-' + this.lostor,true);
-                     window.addEventListener('hashchange',findCity,false);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/united-kingdom':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-kingdom']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/new-zealand':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/new-zealand']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/australia':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/australia']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/singapore':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/singapore']);
                      break;   
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/ireland':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/ireland']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/canada':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/canada']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+
+                  case '/ar/united-states':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/ar/united-kingdom':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-kingdom']);
                      break;
-                  case '/united-states':
-                     this.lostor = localStorage.setItem(this.pathname,true);
-                     window.addEventListener('hashchange',findCity,false);
+                  case '/ar/new-zealand':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/new-zealand']);
                      break;   
+                  case '/ar/australia':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/australia']);
+                     break;
+                  case '/ar/singapore':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/singapore']);
+                     break;
+                  case '/ar/ireland':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/ireland']);
+                     break;   
+                  case '/ar/canada':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/canada']);
+                     break;   
+                  case '/tr/united-states':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
+                     break;
+                  case '/tr/united-kingdom':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-kingdom']);
+                     break;
+                  case '/tr/new-zealand':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/new-zealand']);
+                     break;   
+                  case '/tr/australia':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/australia']);
+                     break;   
+                  case '/tr/singapore':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/singapore']);
+                     break;
+                  case '/tr/ireland':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/ireland']);
+                     break;
+                  case '/tr/canada':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/canada']);
+                     break;   
+                  case '/mx/united-states':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
+                     break;   
+                  case '/mx/united-kingdom':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-kingdom']);
+                     break;   
+                  case '/mx/new-zealand':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/new-zealand']);
+                     break;   
+                  case '/mx/australia':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/australia']);
+                     break;   
+                  case '/mx/singapore':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
+                     break;   
+                  case '/mx/ireland':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/ireland']);
+                     break;   
+                  case '/mx/canada':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/canada']);
+                     break;  
+                   case '/ru/united-states':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
+                     break;   
+                  case '/ru/united-kingdom':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-kingdom']);
+                     break;   
+                  case '/ru/united-zealand ':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/united-states']);
+                     break;   
+                  case '/ru/australia':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/australia']);
+                     break;   
+                  case '/ru/singapore':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/singapore']);
+                     break;   
+                  case '/ru/ireland':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/ireland']);
+                     break;   
+                  case '/ru/canada':
+                     this.lostor = this.pathname.slice(1,this.pathname.length);
+                     this.lostor = localStorage.setItem('country-' + this.lostor,true);
+                     optimizely.push(['setDimensionValue', 'country_name', '/canada']);
+                     break;    
+   
+
 
                }//switch-pathname
+
+            }//if kaplaninternational-hostname
    
-               var res = ' hosting site is: ' + ' ' + this.hostname;
-                   res += '\n it has this pathname: ' + this.pathname;
+            var res = ' hosting site is: ' + ' ' + this.hostname;
+                res += '\n it has this pathname: ' + this.pathname;
+                //this if you came directly to school page
+                // this.lostor = this.pathname.slice(1,this.pathname.length);
+                // this.lostor = localStorage.setItem(this.pathname,true);
                    
-               console.log(res);
+            console.log(res);
+            //count-forward-slash-in-path
+            var path = this.pathname.match(/\//g);
 
-            }//if kaplaninternational
-
-            function findCity() {
-               this.newURL = document.URL;
-               if(lastURL !== newURL) {
-                  console.log('are not the same');
-               }
-
-            }
-              
+            //assign city-course-u-came-through-path
+            if(path.length > 1) {
+               //extract everything after /
+               this.city = /[^/]*$/.exec(this.lastURL)[0];
+               //notatcountryscope
+               if(this.lastURL.indexOf(this.city) > -1) {
+                  console.log(this.lastURL);
+                  console.log(this.city);
+                  localStorage.setItem('city-course-' + this.city, true);
+                  optimizely.push(['setDimensionValue', 'school-page', this.city]);
             
+               }//alreadyatcitylevel
+
+            }//if city-slash-length
+
+            
+
+
               
          };//whatLoaded
+
+         function findCity() {
+            this.newURL = document.URL;
+            if(this.lastURL !== this.newURL) {
+               console.log('not the course');
+            } else {
+               localStorage.setItem('city-course-' + this.city,true);
+               //allora sono tutte due vero
+               console.log('what to do now with a match');
+               optimizely.push(['setDimensionValue', 'school-page', this.city]);
+
+            }
+
+         }//findCity
+
+         window.addEventListener('hashchange',findCity,false);
 
          var res = new Landing();
          res.whatLoaded(window.location.hostname,window.location.pathname,document.URL);
 
-
+         },1000);
 
       }//proto
 
