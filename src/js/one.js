@@ -246,7 +246,7 @@
             //count-forward-slash-in-path
             var path = this.pathname.match(/\//g);
 
-            //assign city-course-u-came-through-path
+            //assign city-course
             if(path.length > 1) {
                //extract everything after /
                this.city = /[^/]*$/.exec(this.lastURL)[0];
