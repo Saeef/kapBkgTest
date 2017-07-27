@@ -263,7 +263,7 @@
 
          }//if city-pg
 
-        
+
          //assign course
          if(subpath.length == 3) {
             
@@ -280,6 +280,49 @@
             }//valid-course
 
          }//if course-pg
+
+
+         //handle city and course foreign
+         debugger;
+         if(this.pathname.indexOf('tr') > -1 || this.pathname.indexOf('ar') > -1 || this.pathname.indexOf('mx') > -1 || this.pathname.indexOf('ru') > -1 ) {
+
+                        //assign city
+                        if(subpath.length == 3) {
+                           //city-banana
+                           this.city = /[^/]*$/.exec(this.lastURL)[0].toLowerCase();
+                           //valid-city
+                           if(this.lastURL.indexOf(this.city) > -1) {
+                              localStorage.setItem('city-' + this.city, true);
+                              //if-matching-course-add-city
+                              allCoursesStored();
+                           }//valid-city
+
+                        }//if city-pg
+
+                        //assign course
+                        if(subpath.length == 4) {
+                           
+                           //course-banana
+                           this.course = /[^/]*$/.exec(this.lastURL)[0];
+                           //valid-course
+                           if(this.lastURL.indexOf(this.course) > -1) {
+                              console.log(this.course);
+                              localStorage.setItem('course-' + this.course, true);
+                              //if-matching-city-stored-add-course
+                              paired = this.pathname.toLowerCase();
+                              paired = paired.split('/')[3];
+                              allStorage(paired);
+                           }//valid-course
+
+                        }//if course-pg
+
+
+
+
+         }//handle city-course foreign
+
+        
+         
 
 
          function allCoursesStored() {
