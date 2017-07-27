@@ -2,7 +2,7 @@
    var $ = window.jQuery;
    window.optimizely = window.optimizely || [];
    var SL = {};
-   var Landing = function(hostname,pathname,city,lostor,lastURL,newURL,course,subpath) {
+   var Landing = function(hostname,pathname,city,lostor,lastURL,newURL,course,subpath,contact) {
       console.info('%c Landing \u221a', 'background:blue;color:white;');
       this.hostname = hostname || undefined;
       this.pathname = pathname || undefined;
@@ -12,6 +12,7 @@
       this.newURL = newURL || undefined;
       this.course = course || undefined;
       this.subpath = subpath || undefined;
+      this.contact = window.location.href;
 
    };//Landing const
 
@@ -40,6 +41,7 @@
          setInterval(function(){
             var whatLoaded = Landing.prototype.whatLoaded = function(hostname,pathname,lastURL,city,course) {
                //Landing
+               var paired,schools,isStored;
                this.lastURL = lastURL;
                this.hostname = hostname;
                this.pathname = pathname;
@@ -243,58 +245,84 @@
             }//if kaplaninternational-hostname
 
             
-         var res = ' hosting site is: ' + ' ' + this.hostname;
-         res += '\n it has this pathname: ' + this.pathname;
-         //this if you came directly to school page
-         // this.lostor = this.pathname.slice(1,this.pathname.length);
-         // this.lostor = localStorage.setItem(this.pathname,true);
-         console.log(res);
+         // var res = ' hosting site is: ' + ' ' + this.hostname;
+         // res += '\n it has this pathname: ' + this.pathname;
+         // console.log(res);
 
-         var path = this.pathname.match(/\//g);
+         
          //assign city
-         if(path.length > 1 && subpath.length == 2) {
-            //extract everything after /
-            this.city = /[^/]*$/.exec(this.lastURL)[0];
-            //notatcountryscope
+         if(subpath.length == 2) {debugger;
+            //city-banana
+            this.city = /[^/]*$/.exec(this.lastURL)[0].toLowerCase();
+            //valid-city
             if(this.lastURL.indexOf(this.city) > -1) {
-               console.log(this.lastURL);
-               console.log(this.city);
                localStorage.setItem('city-' + this.city, true);
-               //not-false
+               //if-matching-course-add-city
+               allCoursesStored();
+            }//valid-city
 
-               if(allStorage('course') !== undefined) {
-                  optimizely.push(['setDimensionValue','city_name', this.city]);
-               }
-               
-            }//alreadyatcitylevel
-
-         }//if city-slash-length
+         }//if city-pg
 
         
-            //assign course
-            if(path.length > 2 && subpath.length == 3) {
-               //extract everything after /
-               this.course = /[^/]*$/.exec(this.lastURL)[0];
-               //notatcountryscope
-               if(this.lastURL.indexOf(this.course) > -1) {
-                  console.log(this.course);
-                  localStorage.setItem('course-' + this.course, true);
-                  if(allStorage('city') !== undefined) {
-                     optimizely.push(['setDimensionValue','school-page', this.course]);
-                  }
-                  
+         //assign course
+         if(subpath.length == 3) {
             
-               }//alreadyatschoollevel
+            //course-banana
+            this.course = /[^/]*$/.exec(this.lastURL)[0];
+            //valid-course
+            if(this.lastURL.indexOf(this.course) > -1) {
+               console.log(this.course);
+               localStorage.setItem('course-' + this.course, true);
+               //if-matching-city-stored-add-course
+               paired = this.pathname.toLowerCase();
+               paired = paired.split('/')[2];
+               allStorage(paired);
+            }//valid-course
 
-            }//if city-slash-length
+         }//if course-pg
 
-      
-         // allStorage('country');
-         // allStorage('city');
-         // allStorage('course');
 
+         function allCoursesStored() {
+            //visited-any-of
+            isStored = [];
+            schools = document.querySelectorAll('#block-views-city-schools-block-1 > div table tr');
+            //starts after tr   
+            for(var h=1; h< schools.length; h++) {
+                isStored.push(schools[h].children[0].innerText);
+            
+            }//for
+
+            var archived = {}, 
+                 keys = Object.keys(localStorage),
+                 i = keys.length;
+            while ( i-- ) {
+               if(keys[i]) {
+                  isStored.map(function(it) {
+                     paired = ('course-' + it).toLowerCase();
+                     debugger;
+                     if(keys[i].indexOf(paired)) {
+                        console.log('matched city with course');
+                        optimizely.push(['setDimensionValue','cita_name', this.city]);
+                        //if-then-contact-form
+                        if(this.contact == 'https://www.kaplaninternational/contact-us/form') {
+                              console.log('enter contact form');
+                              optimizely.push(['setDimensionValue','contact_form', this.contact]);
+                        }//if-then-form
+                        
+                     }
+                  });
+                  
+               }//if
+               archived[ keys[i] ] = localStorage.getItem( keys[i] );
+               
+            }//while
+
+            
+
+        }//allStorage
  
         function allStorage(runner) {
+            runner = 'city-' + runner;
             var count =0;
             runner = runner || undefined;
             var archived = {}, 
@@ -303,21 +331,31 @@
             while ( i-- ) {
                if(keys[i].indexOf(runner) > -1) {
                   archived[ keys[i] ] = localStorage.getItem( keys[i] );
-                  console.log(archived);
-                  //add if course exists
-                  console.log('not undefined!: ' + runner);
-                  count++
-               }//if
-               //if both city and course in 
-               if(keys[i].indexOf('city') > -1 && keys[i].indexOf('course') > -1) { 
-                  if(count > 2) {
-                     localStorage.clear();
-                  }  
-               }//if    
+                  console.log('matched course with city');
+                   optimizely.push(['setDimensionValue','scuola_name', this.course]);
+                   //if-then-contact-form(previously visited course-city)
+                   if(this.contact == 'https://www.kaplaninternational/contact-us/form') {
+                        console.log('enter contact form');
+                        optimizely.push(['setDimensionValue','contact_form', this.contact]);
+                   }//if-then-form
 
+                  return true;
+               }//if
             }//while
 
         }//allStorage
+
+        //form-submit-evt
+         if(this.contact == 'https://www.kaplaninternational/contact-us/form') {
+               //if submit form send api
+               document.querySelector('#webform-client-form-501 > div > button').
+               addEventListener('submit', function(e) {
+                     console.log('fired off submit');
+                     optimizely.push(['setDimensionValue','submit_cta', this.contact]);
+               });//onsubmit
+         
+         }//if-contact-pg
+        
 
               
      };//whatLoaded
