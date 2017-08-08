@@ -8,8 +8,8 @@
 ### objective :book:
 Personalising content on the homepage based on previous browsing behaviour will increase relevance for the user and lead to an increase in conversion.
 
-### targeting
-see TestPlan   :coffee:          
+### targeting . :coffee:  
+see TestPlan           
            
 
 #### devices .  :computer:
