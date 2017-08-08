@@ -1,17 +1,4 @@
-# optiblank  :rocket:
-document.cookie="opticookieQA=ktest; path=/;"
-
-PF09LGY
-https://m.quote.comparethemarket.com/Car/about-your-vehicle/vehicle-usage
-
-document.cookie='optimizelyQARE=test; path=/';
-
-
-Copy of Test 05 - Mileage Calculator [QA]
-
-need to look at updated plan
-add other page targets
-
+# kaplanTest  :rocket:
 
 ### background  :bell:
 - We feel there is a high number of users that browse a city and school page but then do not enquire. 
