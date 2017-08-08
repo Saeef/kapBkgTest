@@ -9,12 +9,8 @@
 Personalising content on the homepage based on previous browsing behaviour will increase relevance for the user and lead to an increase in conversion.
 
 ### targeting
-www.kaplaninternational.com .   :coffee:          
-https://www.kaplaninternational.com/br .   :coffee:         
-https://www.kaplaninternational.com/ar .   :coffee:        
-https://www.kaplaninternational.com/tr .   :coffee:         
-https://www.kaplaninternational.com/mx .   :coffee:         
-https://www.kaplaninternational.com/ru .   :coffee:            
+see TestPlan   :coffee:          
+           
 
 #### devices
 - desktop .  :computer:
