@@ -8,20 +8,20 @@
 ### objective :book:
 Personalising content on the homepage based on previous browsing behaviour will increase relevance for the user and lead to an increase in conversion.
 
-### targeting . :coffee:  
+### targeting  :coffee:  
 see TestPlan           
            
 
-#### devices .  :computer:
+#### devices   :computer:
 - desktop .  
 - mobile .   
 
-#### browsers .  :scroll:
+#### browsers   :scroll:
 - chrome 45+ .   
 - firefox 45+ .  
 - ie9+            
 
-### attributes .  :pill: 
+### attributes   :pill: 
 Brazil		=>	Visitor numbers for users on brazil domain        
 UK		=>	Segment for visitors on .com          
 AR		=>	Segment for visitors on /ar         
