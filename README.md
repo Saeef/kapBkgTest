@@ -12,22 +12,22 @@ Personalising content on the homepage based on previous browsing behaviour will 
 see TestPlan   :coffee:          
            
 
-#### devices
-- desktop .  :computer:
-- mobile .   :computer:
+#### devices .  :computer:
+- desktop .  
+- mobile .   
 
-#### browsers
-- chrome 45+ .   :scroll:
-- firefox 45+ .  :scroll: 
-- ie9+            :scroll:
+#### browsers .  :scroll:
+- chrome 45+ .   
+- firefox 45+ .  
+- ie9+            
 
-### attributes
-Brazil		=>	Visitor numbers for users on brazil domain . :pill:        
-UK		=>	Segment for visitors on .com . :pill:          
-AR		=>	Segment for visitors on /ar . :pill:         
-TR		=>	Segment for visitors on /tr . :pill:         
-MX		=>	Segment for visitors on /mx . :pill:         
-RU		=>	Segment for visitors on /ru . :pill:          
+### attributes .  :pill: 
+Brazil		=>	Visitor numbers for users on brazil domain        
+UK		=>	Segment for visitors on .com          
+AR		=>	Segment for visitors on /ar         
+TR		=>	Segment for visitors on /tr          
+MX		=>	Segment for visitors on /mx        
+RU		=>	Segment for visitors on /ru          
 
 
 ### notes
